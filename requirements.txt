@@ -1,0 +1,5 @@
+# 运行依赖（刻意保持最小：不需要 scipy / pandas / matplotlib）
+numpy>=1.20,<2.0
+
+# 开发/测试依赖
+pytest>=7.0
