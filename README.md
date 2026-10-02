@@ -232,3 +232,23 @@ python -m pytest tests -v        # 逐用例
 
 MIT（见 `LICENSE`）。代码可自由使用，但请自行承担数据与结论的适用性判断——
 本工具的输出**不构成任何投资或工程建议**。
+
+---
+
+## 结果图表（由 `python scripts/demo.py` 实际生成）
+
+以下图全部来自示例数据的一次真实运行，可在本地用 `python scripts/demo.py` 复现。
+
+| 图 | 说明 |
+| --- | --- |
+| ![风频与 Weibull 拟合](docs/figures/fig_wind_frequency.png) | 风速频率分布与 Weibull 拟合 |
+| ![功率曲线](docs/figures/fig_power_curves.png) | 三条示例机型的功率曲线与 Ct 曲线 |
+| ![基准排布](docs/figures/fig_layout_baseline.png) | 基准（规则网格）排布与主风向 |
+| ![优化排布](docs/figures/fig_layout_optimized.png) | 贪心优化后的排布 |
+| ![逐扇区尾流](docs/figures/fig_directional_wake.png) | 逐风向扇区的尾流损失 |
+| ![Pareto 前沿](docs/figures/fig_pareto.png) | AEP 最大 vs 占地最小的非支配解集 |
+| ![方案对比](docs/figures/fig_scheme_compare.png) | 8 个方案的 AEP / LCOE 对比 |
+| ![LCOE 敏感性](docs/figures/fig_tornado_lcoe.png) | LCOE 单因素敏感性（龙卷风图） |
+| ![收敛曲线](docs/figures/fig_convergence.png) | 排布优化的收敛过程 |
+
+> ⚠️ 再次强调：图的输入是**示例/合成数据**，不代表任何真实风电场。
