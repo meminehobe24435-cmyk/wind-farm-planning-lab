@@ -55,11 +55,16 @@ jobs:
         run: |
           python - <<'PY'
           import pathlib, sys
-          files = sorted(pathlib.Path("reports").iterdir())
+          # reports/ 里放了一个 .gitkeep 用来占位（该目录是生成物，被 .gitignore 排除）。
+          # 它天然是 0 字节，必须在"产物非空"检查里排除，否则 CI 会因为占位文件假红。
+          files = [p for p in sorted(pathlib.Path("reports").iterdir())
+                   if not p.name.startswith(".")]
           print("产物数量:", len(files))
           bad = [p.name for p in files if p.is_file() and p.stat().st_size == 0]
           if bad:
               print("空文件:", bad); sys.exit(1)
+          if len(files) == 0:
+              print("没有任何产物，demo 可能没有真正跑起来"); sys.exit(1)
           print("全部产物非空 OK")
           PY
       - name: 上传报告产物
